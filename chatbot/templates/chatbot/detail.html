@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{% static 'chatbot/style.css' %}">
+    <style>
+        .medicine-image {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border: 2px solid #007BFF;
+            border-radius: 10px;
+        }
+        .content-center {
+            display: flex;
+            align-items: center;
+           justify-content: center; 
+            min-height: 100vh;
+            
+        }
+    </style>
+    <title>Medicine Details</title>
+</head>
+<body>
+    <nav class="navbar" style="background-color: #001f3f;">
+        <a href="/" class="navbar-brand text-primary">MedWise</a>
+        <div class="navbar">
+            <a class="nav-item nav-link text-primary" href="/">Home</a>
+            <a class="nav-item nav-link text-primary" href="/search">Search</a>
+            <a class="nav-item nav-link text-primary" href="/chatbot">Chatbot</a>
+            <a class="nav-item nav-link text-primary" href="/image" >Image</a>
+        </div>
+    </nav>
+    
+    <div class="container content-center">
+        <div class="row">
+            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                <img src="{{ medicine_object.image }}" class="medicine-image" alt="Medicine Image">
+            </div>
+            <div class="col-md-6 d-flex flex-column  justify-content: center; ">
+                <div class="row mb-2">
+                    <div class="col-md-12">
+                        <b>Medicine Name:</b> {{ medicine_object.name }}
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-12">
+                        <b>Composition:</b> {{ medicine_object.composition }}
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-12">
+                        <b>Uses:</b> {{ medicine_object.uses }}
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-12">
+                        <b>Side Effects:</b> {{ medicine_object.side_effects }}
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-12">
+                        <b>Substitutes:</b> {{ medicine_object.substitutes }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

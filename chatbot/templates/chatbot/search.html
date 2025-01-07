@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>   
+ 
+    <link rel="stylesheet" href="{% static 'chatbot/style.css' %}">
+    <title>Medicine List</title>
+</head>
+<body>
+    <nav class="navbar" style="background-color: #001f3f;">
+        <a href="/" class="navbar-brand text-primary">MedWise</a>
+        <div class="navbar">
+            <a class="nav-item nav-link text-primary" href="/">Home</a>
+            <a class="nav-item nav-link text-primary" href="/search">Search</a>
+            <a class="nav-item nav-link text-primary" href="/chatbot">Chatbot</a>
+            <a class="nav-item nav-link text-primary" href="/image" >Image</a>
+        </div>
+    </nav>
+    
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <form class="card card-sm">
+                <div class="card-body row no-gutters align-items-center">
+                    <div class="col">
+                        <input type="search" name="medicine_name" placeholder="Search for medicine" class="form-control form-control-borderless">
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-success" type="submit">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        {% for medicine in medicine_objects %}
+        {% if forloop.counter|divisibleby:2 %}
+            <div class="w-100"></div>
+        {% endif %}
+        <div class="col-md-6">
+            <p><a href="/{{ medicine.id }}">{{ medicine.name }}</a></p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 offset-md-4">
+            <ul class="pagination">
+                {% if medicine_objects.has_previous %}
+
+                <li class="page-item">
+                    <a class="page-link" href="?page=1">First</a>
+                </li>
+
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ medicine_objects.previous_page_number }}">Previous</a>
+                    </li>
+                {% endif %}
+
+                <li class="page-item active">
+                    <a class="page-link" href="?page={{ medicine_objects.number }}">Current</a>
+                </li>
+
+                {% if medicine_objects.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ medicine_objects.next_page_number }}">Next</a>
+                </li>
+
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ medicine_objects.paginator.num_pages }}">Last</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>    
+</body>
+</html>

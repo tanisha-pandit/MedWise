@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'chatbot/style.css' %}">
+    <title>Index Page</title>
+    
+</head>
+<body>
+    <nav class="navbar" style="background-color: #001f3f;">
+        <a href="/" class="navbar-brand text-primary">MedWise</a>
+        <div class="navbar">
+            <a class="nav-item nav-link text-primary" href="/">Home</a>
+            <a class="nav-item nav-link text-primary" href="/search">Search</a>
+            <a class="nav-item nav-link text-primary" href="/chatbot">Chatbot</a>
+            <a class="nav-item nav-link text-primary" href="/image" >Image</a>
+        </div>
+    </nav>
+    <h1 style="color:darkblue;margin-left:10px">Upload an Image</h1>
+    <form method="post" enctype="multipart/form-data" style="color:darkblue;margin-left:10px">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" style="color: white;background-color:darkblue; margin-left:10px;">Upload Image</button>
+         
+    </form>
+
+    {% if extracted_text %}
+        <h2 style="color:darkblue;margin-left:10px">Extracted Text:</h2>
+        <p style="color:darkblue;margin-left:10px">{{ extracted_text }}</p>
+
+        {% if medicines %}
+            <h2 style="color:darkblue;margin-left:10px">Matching Medicines:</h2>
+            <ul>
+                {% for medicine in medicines %}
+                    <li>
+                        <strong style="color:darkblue;margin-left:10px">{{ medicine.name }}</strong><br>
+                        <em style="color:darkblue;margin-left:10px">Uses:</em> {{ medicine.uses }}<br>
+                        <em style="color:darkblue;margin-left:10px">Composition:</em> {{ medicine.composition }}<br>
+                        <em style="color:darkblue;margin-left:10px">Side Effects:</em> {{ medicine.side_effects }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p style="color:darkblue;margin-left:10px">No matching medicines found.</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>

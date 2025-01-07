@@ -1,0 +1,57 @@
+body{
+    background-color: lightblue;
+    font-size: medium;
+    color: black;
+    margin: 10px;
+}
+a{
+    font-size: medium;
+    color: black;
+}
+.form-control{
+    background-color: lightblue;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 2cm;
+    border-color: black;
+    max-width: 3000px;
+
+}
+.card{
+    background-color: lightblue;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 0cap;
+    font-size: medium;
+}
+
+.col-md-6{
+    border-color: black;
+}
+
+.row{
+    border-color: brown;
+}
+h1 {
+    color: #333;
+}
+
+form {
+    margin: 20px;
+    margin-bottom: 20px;
+}
+
+p{
+    font-size: medium;
+}
+
+button {
+    background-color: darkblue;
+    margin: 20px;
+    color: white;
+    border:wheat;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}

@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'chatbot/style.css' %}">
+    <title>Index Page</title>
+    <style>
+        .feature-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #001f3f; /* Dark blue border */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            height: 375x;
+            width: 375px;
+        }
+
+        .feature-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .feature-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-top: 10px;
+            
+        }
+
+        .feature-description {
+            font-size: 1rem;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        .centered-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" style="background-color: #001f3f;">
+        <a href="/" class="navbar-brand text-primary">MedWise</a>
+        <div class="navbar">
+            <a class="nav-item nav-link text-primary" href="/">Home</a>
+            <a class="nav-item nav-link text-primary" href="/search">Search</a>
+            <a class="nav-item nav-link text-primary" href="/chatbot">Chatbot</a>
+            <a class="nav-item nav-link text-primary" href="/image" >Image</a>
+        </div>
+    </nav>
+    
+    <div class="centered-container">
+        <div class="row">
+            <!-- Search Container -->
+            <div class="col-md-4">
+                <div class="feature-container">
+                    <img src="https://cdn.pixabay.com/photo/2017/06/30/10/56/icon-2457944_960_720.png" alt="Search Icon" class="feature-image">
+                    <div class="feature-title">
+                        <a href="/search" class="text-primary">Search</a>
+                    </div>
+                    <div class="feature-description">
+                        Gives index or list of medicines present
+                    </div>
+                </div>
+            </div>
+        
+            <!-- ChatBot Container -->
+            <div class="col-md-4">
+                <div class="feature-container">
+                    <img src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/chat-circle-blue-512.png" alt="ChatBot Icon" class="feature-image">
+                    <div class="feature-title">
+                        <a href="/chatbot" class="text-primary">ChatBot</a>
+                    </div>
+                    <div class="feature-description">
+                        Ask questions about medicines
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Image Container -->
+            <div class="col-md-4">
+                <div class="feature-container">
+                    <img src="https://icon-library.com/images/upload-image-icon/upload-image-icon-14.jpg" alt="Upload Icon" class="feature-image">
+                    <div class="feature-title">
+                        <a href="/image" class="text-primary">Image</a>
+                    </div>
+                    <div class="feature-description">
+                        Upload image to get information
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

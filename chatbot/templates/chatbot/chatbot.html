@@ -1,0 +1,48 @@
+{% load static %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'chatbot/style.css' %}">
+<nav class="navbar" style="background-color: #001f3f; color: aliceblue;">
+    <a href="/" class="navbar-brand text-primary">MedWise</a>
+    <div class="navbar">
+        <a class="nav-item nav-link text-primary" href="/">Home</a>
+        <a class="nav-item nav-link text-primary" href="/search">Search</a>
+        <a class="nav-item nav-link text-primary" href="/chatbot">Chatbot</a>
+        <a class="nav-item nav-link text-primary" href="/image" >Image</a>
+    </div>
+</nav>
+<div class="webchat" style=" width: 100vw; height: 100vh;">
+    <iframe
+      style="height: 100%; width: 100%; border: none;"
+      srcdoc='
+      <!doctype html>
+      <html lang="en">
+        <head></head>
+        <body>
+            
+          <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+          <script defer>
+            window.botpress.on("webchat:ready", (conversationId) => {
+              botpress.open();
+            });
+            window.botpress.init({
+                "botId": "f42bc2ef-b741-4639-886e-23da17a6a0dd",
+                "configuration": {
+                  "website": {},
+                  "email": {},
+                  "phone": {},
+                  "termsOfService": {},
+                  "privacyPolicy": {},
+                  "color": "#0f3b83",
+                  "variant": "solid",
+                  "themeMode": "light",
+                  "fontFamily": "rubik",
+                  "radius": 1,
+                  "additionalStylesheetUrl": "https://files.bpcontent.cloud/2025/01/06/15/20250106154901-3XUP9Z5M.css"
+                },
+                "clientId": "ebc7ac87-63bb-49ad-9ca6-bee911112310"
+              });
+          </script>
+        </body>
+      </html>'
+    ></iframe>
+  </div>
